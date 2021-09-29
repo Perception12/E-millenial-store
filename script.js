@@ -1,3 +1,14 @@
+//Buttons
+var btn1, btn2, btn3, btn4, btn5, btn6;
+
+btn1 = document.getElementById('item1');
+btn2 = document.getElementById('item2');
+btn3 = document.getElementById('item3');
+btn4 = document.getElementById('item4');
+btn5 = document.getElementById('item5');
+btn6 = document.getElementById('item6');
+
+
 function displayCart() {
     document.getElementById('shop').style.display = 'block';
 }
