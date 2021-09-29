@@ -43,6 +43,18 @@ function createCartTable(n) {
     sn.style.fontSize = '18px';
     sn.style.fontFamily = 'sans-serif';
 
+    itemCol.style.textAlign = 'center';
+    itemCol.style.padding = '10px';
+    itemCol.style.fontWeight = 'bold';
+    itemCol.style.fontSize = '18px';
+    itemCol.style.fontFamily = 'sans-serif';
+
+    priceCol.style.textAlign = 'center';
+    priceCol.style.padding = '10px';
+    priceCol.style.fontWeight = 'bold';
+    priceCol.style.fontSize = '18px';
+    priceCol.style.fontFamily = 'sans-serif';
+
 
 
     row.appendChild(sn);
