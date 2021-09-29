@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="navigation">
+            <div class="logo">
+                <img src="EMS.svg" />
+            </div>
+            <div class="resolution">
+                <div class="nav">
+                    <ul>
+                        <li><a href="#intro">Intro</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gadgetSection">Shop</a></li>
+                    </ul>
+                </div>
+                <div id="cartEvent" class="cart">
+                    <a><img src="cart.svg"></a>
+                    <h2 id="itemNumber">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div id="intro" class="sectionOne clearfix">
+            <h1>THE E-MILLENIAL STORE</h1>
+            <img src="heroImage.png">
+        </div>
+        <br/>
+        <div class="button">
+            <a href="#gadgetSection">SHOP NOW</a>
+        </div>
+    </div>
+    <div id="about" class="description">
+        <p>E-Millenial Store is an hypothetical online store for gadgets we believe every millenial or "Gen-Z" will have today. We've got mobile phones, laptops, smartwatches and other gadgets. Explore all our gadgets and choose the one that suits you.</p>
+    </div>
+
+
+    <div class="gadgets" id="gadgetSection">
+        <h1>OUR GADGETS</h1>
+
+        <div class="clearfix"></div>
+
+        <div class="product">
+            <img src="product1.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p>&#8358;<span id="price1">500000</span></p>
+            </div>
+            <h2 id="name1">SAMSUNG TV</h2>
+            <button onclick="selectItem('item1')" id="item1">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product2.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p>&#8358;<span id="price2">300000</span></p>
+            </div>
+            <h2 id="name2">PIXEL 4a</h2>
+            <button onclick="selectItem('item2')" id="item2">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product3.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p>&#8358;<span id="price3">250000</span></p>
+            </div>
+            <h2 id="name3">PS 5</h2>
+            <button onclick="selectItem('item3')" id="item3">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product4.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p>&#8358;<span id="price4">350000</span></p>
+            </div>
+            <h2 id="name4">MACBOOK AIR</h2>
+            <button onclick="selectItem('item4')" id="item4">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product5.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p>&#8358;<span id="price5">200000</span></p>
+            </div>
+            <h2 id="name5">APPLE WATCH</h2>
+            <button onclick="selectItem('item5')" id="item5">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product6.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p>&#8358;<span id="price6">150000</span></p>
+            </div>
+            <h2 id="name6">AIR PODS</h2>
+            <button onclick="selectItem('item6')" id="item6">ADD TO CART</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <span><img src="EMS.svg"></span>
+        <span><p>Designed and Crafted by a Frontend Ninja</p></span>
+    </div>
+
+    <div id="shop">
+        <div id="cartList">
+            <table id="table">
+                <tr>
+                    <th id="listIndex">S/N</th>
+                    <th id="itemName">Item</th>
+                    <th id="itemPrice">Price</th>
+                    <th id="quantity">Quantity</th>
+                    <th id="remove"></th>
+                </tr>
+            </table>
+
+            <form action="" id="dForm">
+                <input type="text" placeholder="Your Name"><br><br>
+                <input type="email" placeholder="Your Email"><br><br>
+                <input type="text" placeholder="Your phone number">
+            </form>
+
+            <h2>Total Amount to be Paid</h2>
+            <p><b>&#8358;<span id="total">0</span></b></p>
+
+            <button id="checkout">checkout</button>
+            <button id="continue" onclick="back()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
