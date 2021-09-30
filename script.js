@@ -1,11 +1,93 @@
 var itemCount = 0;
 var itemCounter = document.getElementById('itemNumber');
-var item, itemName, itemPrice;
-var tableList = {
-    releaseInfo: function() {
+var item, itemName, itemPrice, row;
+var item1, item2, item3, item4, item5, item6;
 
+var tableList = {
+    getName: function() {
+        return this.name;
+    },
+
+    getRowID: function() {
+        return this.rowID;
+    },
+
+    removedState: function() {
+        return this.remove;
+    },
+
+    getPriceID: function() {
+        return this.priceID;
+    },
+
+    getQID: function() {
+        return this.quantityID;
+    },
+
+    getPrice: function() {
+        return this.price;
     }
 }
+
+function createObject(objName, r, d, q) {
+    if (objName == 'item1') {
+        item1 = Object.create(tableList);
+        item1.name = itemName;
+        item1.rowID = r;
+        item1.removed = false;
+        item1.priceID = d;
+        item1.quantityID = q;
+        item1.price = itemPrice;
+
+    } else if (objName == 'item2') {
+        item2 = Object.create(tableList);
+        item2.name = itemName;
+        item2.rowID = r;
+        item2.removed = false;
+        item2.priceID = d;
+        item2.quantityID = q;
+        item2.price = itemPrice;
+
+    } else if (objName == 'item3') {
+        item3 = Object.create(tableList);
+        item3.name = itemName;
+        item3.rowID = r;
+        item3.removed = false;
+        item3.priceID = d;
+        item3.quantityID = q;
+        item3.price = itemPrice;
+
+    } else if (objName == 'item4') {
+        item4 = Object.create(tableList);
+        item4.name = itemName;
+        item4.rowID = r;
+        item4.removed = false;
+        item4.priceID = d;
+        item4.quantityID = q;
+        item4.price = itemPrice;
+
+    } else if (objName == 'item5') {
+        item5 = Object.create(tableList);
+        item5.name = itemName;
+        item5.rowID = r;
+        item5.removed = false;
+        item5.priceID = d;
+        item5.quantityID = q;
+        item5.price = itemPrice;
+
+    } else if (objName == 'item6') {
+        item6 = Object.create(tableList);
+        item6.name = itemName;
+        item6.rowID = r;
+        item6.removed = false;
+        item6.priceID = d;
+        item6.quantityID = q;
+        item6.price = itemPrice;
+    }
+
+}
+
+
 var total = document.getElementById('total');
 
 function displayCart() {
@@ -29,7 +111,7 @@ function changeProperty(item) {
         item.style.backgroundColor = "#FFE9D6";
         item.style.color = 'black';
         itemCounter.innerHTML = itemCount;
-        createTable();
+        return true;
 
     } else {
         itemCount--;
@@ -46,29 +128,39 @@ function selectItem(idName) {
 
     if (idName == 'item1') {
         getInfo('name1', 'price1');
+        changeProperty(item);
+        if (changeProperty) { createTable(idName); }
 
     } else if (idName == 'item2') {
         getInfo('name2', 'price2');
+        changeProperty(item);
+        if (changeProperty) { createTable(idName); }
 
     } else if (idName == 'item3') {
         getInfo('name3', 'price3');
+        changeProperty(item);
+        if (changeProperty) { createTable(idName); }
 
     } else if (idName == 'item4') {
         getInfo('name4', 'price4')
+        changeProperty(item);
+        if (changeProperty) { createTable(idName); }
 
     } else if (idName == 'item5') {
         getInfo('name5', 'price5');
+        changeProperty(item);
+        if (changeProperty) { createTable(idName); }
 
     } else {
         getInfo('name6', 'price6');
+        changeProperty(item);
+        if (changeProperty) { createTable(idName); }
     }
 
-    changeProperty(item);
 }
 
 
-function createTable() {
-    var listIndex = 0;
+function createTable(product) {
     var row = document.createElement('tr');
     row.id = "id" + itemName;
 
@@ -156,16 +248,8 @@ function createTable() {
     removeBtn.onclick = deleteRow;
 
     document.getElementById('table').appendChild(row);
-    var product = Object.create(tableList);
-    product.index = listIndex;
-    product.name = itemName;
-    product.rowID = row.id;
-    product.removed = false;
-    product.priceID = digits.id;
-    product.quantityID = quantityCol.id;
-    product.price = itemPrice;
-    console.log(tableList);
-    listIndex++;
+
+    createObject(product, row.id, digits.id, quantityCol.id);
 }
 
 
@@ -186,7 +270,6 @@ var decrease = function() {
         alert("The item Quantity cannot be less than 0");
     }
 }
-
 
 
 cartBtn = document.getElementById('cartEvent');
