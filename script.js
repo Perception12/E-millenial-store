@@ -1,3 +1,6 @@
+var itemCount = 0;
+var itemCounter = document.getElementById('itemNumber');
+
 function displayCart() {
     document.getElementById('shop').style.display = 'block';
 }
@@ -13,9 +16,13 @@ for (let i = 0; i < itemButtons.length; i++) {
     btn.addEventListener('click', function(event) {
         var buttonClicked = event.target;
         if (buttonClicked.innerHTML == 'ADD TO CART') {
+            itemCount++;
+            itemCounter.innerHTML = itemCount;
             styleOne(buttonClicked);
-            createCart(buttonClicked);
+            createCart(buttonClicked, itemCount);
         } else {
+            itemCount--;
+            itemCounter.innerHTML = itemCount;
             styleTwo(buttonClicked);
         }
 
@@ -55,7 +62,7 @@ function removeFromCart() {
 
 }
 
-function createCart(eventTarget) {
+function createCart(eventTarget, count) {
     btnTarget = eventTarget;
     var container = btnTarget.parentElement;
 
@@ -133,7 +140,6 @@ function createCart(eventTarget) {
     row.appendChild(removeBtnCol);
 
     document.getElementById('table').appendChild(row);
-    document.getElementById('itemNumber').innerHTML = count;
 
     function incrQuantity() {
         qCount++;
