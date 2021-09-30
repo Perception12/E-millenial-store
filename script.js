@@ -69,11 +69,11 @@ function createList() {
 
     row.id = "id" + itemName;
 
-    var data1 = document.createElement('td');
-    var data2 = document.createElement('td');
-    var data3 = document.createElement('td');
-    var data4 = document.createElement('td');
-    var data5 = document.createElement('td');
+    var snCol = document.createElement('td');
+    var itemCol = document.createElement('td');
+    var priceCol = document.createElement('td');
+    var quantityCol = document.createElement('td');
+    var removeBtnCol = document.createElement('td');
     var digits = document.createElement('span');
     var symbol = document.createElement('span');
 
@@ -112,34 +112,34 @@ function createList() {
     var qCount = 1;
     quantity.innerHTML = qCount;
 
-    data1.innerHTML = itemCount;
-    data1.style.textAlign = 'center';
-    data1.style.padding = '10px';
+    snCol.innerHTML = itemCount;
+    snCol.style.textAlign = 'center';
+    snCol.style.padding = '10px';
 
-    data2.innerHTML = itemName;
-    data2.style.textAlign = 'center';
-    data2.style.padding = '10px';
+    itemCol.innerHTML = itemName;
+    itemCol.style.textAlign = 'center';
+    itemCol.style.padding = '10px';
 
-    data3.appendChild(symbol);
-    data3.appendChild(digits);
-    data3.style.textAlign = 'center';
-    data3.style.padding = '10px';
+    priceCol.appendChild(symbol);
+    priceCol.appendChild(digits);
+    priceCol.style.textAlign = 'center';
+    priceCol.style.padding = '10px';
 
     tableList.push({ name: itemName, removed: false, ID: row.id, dID: digits.id });
 
-    data4.appendChild(decrBtn);
-    data4.appendChild(quantity);
-    data4.appendChild(incrBtn);
-    data4.style.textAlign = 'center';
-    data4.style.padding = '10px';
+    quantityCol.appendChild(decrBtn);
+    quantityCol.appendChild(quantity);
+    quantityCol.appendChild(incrBtn);
+    quantityCol.style.textAlign = 'center';
+    quantityCol.style.padding = '10px';
 
-    data5.appendChild(removeBtn);
+    removeBtnCol.appendChild(removeBtn);
 
-    row.appendChild(data1);
-    row.appendChild(data2);
-    row.appendChild(data3);
-    row.appendChild(data4);
-    row.appendChild(data5);
+    row.appendChild(snCol);
+    row.appendChild(itemCol);
+    row.appendChild(priceCol);
+    row.appendChild(quantityCol);
+    row.appendChild(removeBtnCol);
 
     var increase = function() {
         qCount++;
