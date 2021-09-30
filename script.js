@@ -25,22 +25,13 @@ function changeProperty(item) {
         item.style.backgroundColor = "#FFE9D6";
         item.style.color = 'black';
         itemCounter.innerHTML = itemCount;
-        createList();
-        getTotalPrice();
+
     } else {
         itemCount--;
         item.innerHTML = "ADD TO CART";
         item.style.backgroundColor = "#FF7A00";
         item.style.color = "white";
         itemCounter.innerHTML = itemCount;
-        for (let i = 0; i < tableList.length; i++) {
-            if (tableList[i].name == itemName && tableList[i].removed == false) {
-                removeRow(tableList[i].ID);
-                tableList[i].removed = true;
-                getTotalPrice();
-            }
-        }
-
     }
 }
 
