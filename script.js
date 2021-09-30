@@ -243,8 +243,46 @@ function summary() {
     closeCart();
     document.getElementById('customer').innerHTML = nameInput.value;
     document.getElementById('summary').style.display = 'block';
+    summaryTable();
 }
 
 function closeSummary() {
     document.getElementById('summary').style.display = 'none';
+}
+
+function summaryTable() {
+    var itemTable = document.getElementById('table');
+    var summaryTable = document.getElementById('summary-table');
+    var cartRows = itemTable.getElementsByClassName('cart-row');
+    for (let i = 0; i < cartRows.length; i++) {
+        var sn = i + 1
+        var cartRow = cartRows[i];
+        var nameElement = cartRow.getElementsByClassName('item-name')[0];
+        var name = nameElement.innerText;
+        var quantityElement = cartRow.getElementsByClassName('item-quantity')[0];
+        var quantity = parseInt(quantityElement.innerText.replace('-', ''));
+
+        var summaryRow = document.createElement('tr');
+        var sumSN = document.createElement('td')
+        var sumName = document.createElement('td');
+        var sumQuantity = document.createElement('td');
+
+        sumSN.innerHTML = sn;
+        sumName.innerHTML = name;
+        sumQuantity.innerHTML = quantity;
+
+        sumSN.style.textAlign = 'center';
+        sumSN.style.padding = '10px';
+
+        sumName.style.textAlign = 'center';
+        sumName.style.padding = '10px';
+
+        sumQuantity.style.textAlign = 'center';
+        sumQuantity.style.padding = '10px';
+
+        summaryRow.appendChild(sumSN);
+        summaryRow.appendChild(sumName);
+        summaryRow.appendChild(sumQuantity);
+        summaryTable.appendChild(summaryRow);
+    }
 }

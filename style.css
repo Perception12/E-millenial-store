@@ -340,6 +340,19 @@ ul li a:hover {
     color: white;
 }
 
+#ThankYouPage table {
+    width: 100%;
+}
+
+#ThankYouPage table tr {
+    padding: 5px;
+}
+
+#ThankYouPage table th {
+    padding: 10px;
+    text-align: center;
+}
+
 @media screen and (max-width: 1200px) {
     .header {
         height: 1000px;
