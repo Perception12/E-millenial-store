@@ -384,6 +384,9 @@ ul li a:hover {
         height: 550px;
         margin: auto;
     }
+    #cartList {
+        overflow-x: auto;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -423,5 +426,8 @@ ul li a:hover {
         font-size: 1.2em;
         width: 50%;
         margin: auto;
+    }
+    #cartList {
+        overflow-x: auto;
     }
 }
