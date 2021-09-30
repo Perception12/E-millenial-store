@@ -3,32 +3,22 @@ var itemCounter = document.getElementById('itemNumber');
 var item, itemName, itemPrice;
 var tableList = [];
 var total = document.getElementById('total');
-var removed;
 
-function selectItem(idName) {
-    item = document.getElementById(idName);
+function displayCart() {
+    document.getElementById('shop').style.display = 'block';
+}
 
-    if (idName == 'item1') {
-        itemName = document.getElementById('name1').innerHTML;
-        itemPrice = document.getElementById('price1').innerHTML;
-    } else
-    if (idName == 'item2') {
-        itemName = document.getElementById('name2').innerHTML;
-        itemPrice = document.getElementById('price2').innerHTML;
-    } else if (idName == 'item3') {
-        itemName = document.getElementById('name3').innerHTML;
-        itemPrice = document.getElementById('price3').innerHTML;
-    } else if (idName == 'item4') {
-        itemName = document.getElementById('name4').innerHTML;
-        itemPrice = document.getElementById('price4').innerHTML;
-    } else if (idName == 'item5') {
-        itemName = document.getElementById('name5').innerHTML;
-        itemPrice = document.getElementById('price5').innerHTML;;
-    } else {
-        itemName = document.getElementById('name6').innerHTML;
-        itemPrice = document.getElementById('price6').innerHTML;
-    }
+function continueShopping() {
+    document.getElementById('shop').style.display = 'none';
+}
 
+function getInfo(name, price) {
+    itemName = document.getElementById(name).innerHTML;
+    itemPrice = document.getElementById(price).innerHTML;
+}
+
+// Changes the style Properties of the selected tag
+function changeProperty(item) {
     if (item.innerHTML == 'ADD TO CART') {
         itemCount++;
         item.innerHTML = "REMOVE FROM CART";
@@ -38,7 +28,6 @@ function selectItem(idName) {
         createList();
         getTotalPrice();
     } else {
-
         itemCount--;
         item.innerHTML = "ADD TO CART";
         item.style.backgroundColor = "#FF7A00";
@@ -55,13 +44,32 @@ function selectItem(idName) {
     }
 }
 
-function displayCart() {
-    document.getElementById('shop').style.display = 'block';
+
+function selectItem(idName) {
+    item = document.getElementById(idName);
+
+    if (idName == 'item1') {
+        getInfo('name1', 'price1');
+
+    } else if (idName == 'item2') {
+        getInfo('name2', 'price2');
+
+    } else if (idName == 'item3') {
+        getInfo('name3', 'price3');
+
+    } else if (idName == 'item4') {
+        getInfo('name4', 'price4')
+
+    } else if (idName == 'item5') {
+        getInfo('name5', 'price5');
+
+    } else {
+        getInfo('name6', 'price6');
+    }
+
+    changeProperty(item);
 }
 
-function back() {
-    document.getElementById('shop').style.display = 'none';
-}
 
 function createList() {
     removed = 0;
