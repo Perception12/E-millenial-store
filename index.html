@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="navigation">
+            <div class="logo">
+                <img src="EMS.svg" />
+            </div>
+            <div class="resolution">
+                <div class="nav">
+                    <ul>
+                        <li><a href="#intro">Intro</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#gadgetSection">Shop</a></li>
+                    </ul>
+                </div>
+                <div onclick="displayCart()" class="cart">
+                    <a><img src="cart.svg"></a>
+                    <h2 id="itemNumber">0</h2>
+                </div>
+            </div>
+        </div>
+
+        <div id="intro" class="sectionOne clearfix">
+            <h1>THE E-MILLENIAL STORE</h1>
+            <img src="heroImage.png">
+        </div>
+        <br/>
+        <div class="button">
+            <a href="#gadgetSection">SHOP NOW</a>
+        </div>
+    </div>
+    <div id="about" class="description">
+        <p>E-Millenial Store is an hypothetical online store for gadgets we believe every millenial or "Gen-Z" will have today. We've got mobile phones, laptops, smartwatches and other gadgets. Explore all our gadgets and choose the one that suits you.</p>
+    </div>
+
+
+    <div class="gadgets" id="gadgetSection">
+        <h1>OUR GADGETS</h1>
+
+        <div class="clearfix"></div>
+
+        <div class="product">
+            <img src="product1.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p class="item-price">₦500000</p>
+            </div>
+            <h2 class="item-name">SAMSUNG TV</h2>
+            <button class="items">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product2.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p class="item-price">₦300000</p>
+            </div>
+            <h2 class="item-name">PIXEL 4a</h2>
+            <button class="items">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product3.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p class="item-price">₦250000</p>
+            </div>
+            <h2 class="item-name">PS 5</h2>
+            <button class="items">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product4.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p class="item-price">₦350000</p>
+            </div>
+            <h2 class="item-name">MACBOOK AIR</h2>
+            <button class="items">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product5.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p class="item-price">₦200000</p>
+            </div>
+            <h2 class="item-name">APPLE WATCH</h2>
+            <button class="items">ADD TO CART</button>
+        </div>
+
+        <div class="product">
+            <img src="product6.png">
+            <div class="centered">
+                <h2>Price</h2>
+                <p class="item-price">₦150000</p>
+            </div>
+            <h2 class="item-name">AIR PODS</h2>
+            <button class="items">ADD TO CART</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <span><img src="EMS.svg"></span>
+        <span><p>Designed and Crafted by a Frontend Ninja</p></span>
+    </div>
+
+    <div id="shop">
+        <div id="cartList">
+            <table id="table">
+                <tr>
+                    <th>S/N</th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th></th>
+            </table>
+
+            <form action="" id="dForm">
+                <input type="text" placeholder="Your Name"><br><br>
+                <input type="email" placeholder="Your Email"><br><br>
+                <input type="text" placeholder="Your phone number">
+            </form>
+
+            <h2>Total Amount to be Paid</h2>
+            <p><b>₦<span id="total">0</span></b></p>
+
+            <button id="checkout">checkout</button>
+            <button id="continue" onclick="continueShopping()">Continue Shopping</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
