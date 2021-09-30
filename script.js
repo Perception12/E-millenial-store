@@ -25,6 +25,7 @@ for (let i = 0; i < itemButtons.length; i++) {
             itemCount--;
             itemCounter.innerHTML = itemCount;
             styleTwo(buttonClicked);
+            removeCartRow(buttonClicked);
         }
 
         updateTotalPrice();
@@ -100,6 +101,10 @@ function createCart(eventTarget, count) {
     removeBtn.style.borderRadius = "10px";
     removeBtn.style.cursor = "pointer";
 
+    incrBtn.onclick = incrQuantity;
+    decrBtn.onclick = decrQuantity;
+    removeBtn.onclick = removeRow;
+
     var quantity = document.createElement('span');
     quantity.style.padding = "5px";
     var qCount = 1;
@@ -111,6 +116,7 @@ function createCart(eventTarget, count) {
     snCol.style.padding = '10px';
 
     itemCol.innerHTML = itemName;
+    itemCol.className = 'item-name';
     itemCol.style.textAlign = 'center';
     itemCol.style.padding = '10px';
 
@@ -128,9 +134,6 @@ function createCart(eventTarget, count) {
 
     removeBtnCol.appendChild(removeBtn);
 
-    incrBtn.onclick = incrQuantity;
-    decrBtn.onclick = decrQuantity;
-    removeBtn.onclick = removeRow;
 
     row.appendChild(snCol);
     row.appendChild(itemCol);
@@ -166,7 +169,25 @@ function removeRow() {
             var removeClicked = event.target;
             removeClicked.parentElement.parentElement.remove();
             itemCount--;
+            itemCounter.innerHTML = itemCount;
             updateTotalPrice();
         })
     }
+}
+
+function removeCartRow(event) {
+    btnTarget = event;
+    var container = btnTarget.parentElement;
+    var itemName = container.getElementsByClassName('item-name')[0].innerText;
+    var rows = document.getElementsByClassName('cart-row');
+
+    for (let i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        rowItem = row.getElementsByClassName('item-name')[0];
+        if (rowItem.innerText == itemName) {
+            row.remove();
+            updateTotalPrice();
+        }
+    }
+    styleTwo(event);
 }
