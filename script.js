@@ -167,18 +167,6 @@ function createCart(eventTarget, count) {
     }
 }
 
-// function removeRow() {
-//     var removeItemButtons = document.getElementsByClassName('btn-danger');
-//     for (let i = 0; i < removeItemButtons.length; i++) {
-//         var button = removeItemButtons[i];
-//         button.addEventListener('click', function(event) {
-//             var removeClicked = event.target;
-//             removeClicked.parentElement.parentElement.remove();
-//             updateTotalPrice();
-//         })
-//     }
-// }
-
 function removeCartRow(event) {
     btnTarget = event;
     var container = btnTarget.parentElement;
