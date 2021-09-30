@@ -7,7 +7,6 @@ function continueShopping() {
 }
 
 itemButtons = document.getElementsByClassName('items');
-console.log(itemButtons);
 
 for (let i = 0; i < itemButtons.length; i++) {
     var btn = itemButtons[i];
