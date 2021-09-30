@@ -1,7 +1,11 @@
 var itemCount = 0;
 var itemCounter = document.getElementById('itemNumber');
 var item, itemName, itemPrice;
-var tableList = [];
+var tableList = {
+    releaseInfo: function() {
+
+    }
+}
 var total = document.getElementById('total');
 
 function displayCart() {
@@ -17,7 +21,7 @@ function getInfo(name, price) {
     itemPrice = document.getElementById(price).innerHTML;
 }
 
-// Changes the style Properties of the selected tag
+// Changes the style Properties of the selected tag and add the item to cart
 function changeProperty(item) {
     if (item.innerHTML == 'ADD TO CART') {
         itemCount++;
@@ -25,6 +29,7 @@ function changeProperty(item) {
         item.style.backgroundColor = "#FFE9D6";
         item.style.color = 'black';
         itemCounter.innerHTML = itemCount;
+        createTable();
 
     } else {
         itemCount--;
@@ -62,11 +67,9 @@ function selectItem(idName) {
 }
 
 
-function createList() {
-    removed = 0;
-    var price;
+function createTable() {
+    var listIndex = 0;
     var row = document.createElement('tr');
-
     row.id = "id" + itemName;
 
     var snCol = document.createElement('td');
@@ -125,13 +128,12 @@ function createList() {
     priceCol.style.textAlign = 'center';
     priceCol.style.padding = '10px';
 
-    tableList.push({ name: itemName, removed: false, ID: row.id, dID: digits.id });
-
     quantityCol.appendChild(decrBtn);
     quantityCol.appendChild(quantity);
     quantityCol.appendChild(incrBtn);
     quantityCol.style.textAlign = 'center';
     quantityCol.style.padding = '10px';
+    quantityCol.id = 'q' + itemName;
 
     removeBtnCol.appendChild(removeBtn);
 
@@ -140,26 +142,6 @@ function createList() {
     row.appendChild(priceCol);
     row.appendChild(quantityCol);
     row.appendChild(removeBtnCol);
-
-    var increase = function() {
-        qCount++;
-        quantity.innerHTML = qCount;
-        price = itemPrice * qCount;
-        digits.innerHTML = price;
-        getTotalPrice();
-    }
-
-    var decrease = function() {
-        qCount--;
-        if (qCount >= 0) {
-            quantity.innerHTML = qCount;
-            price = itemPrice * qCount;
-            digits.innerHTML = price;
-            getTotalPrice();
-        } else {
-            alert("The item Quantity cannot be less than 0");
-        }
-    }
 
     var deleteRow = function() {
         row.remove();
@@ -174,9 +156,36 @@ function createList() {
     removeBtn.onclick = deleteRow;
 
     document.getElementById('table').appendChild(row);
-
+    var product = Object.create(tableList);
+    product.index = listIndex;
+    product.name = itemName;
+    product.rowID = row.id;
+    product.removed = false;
+    product.priceID = digits.id;
+    product.quantityID = quantityCol.id;
+    product.price = itemPrice;
+    console.log(tableList);
+    listIndex++;
 }
 
+
+var increase = function() {
+    qCount++;
+    quantity.innerHTML = qCount;
+    price = itemPrice * qCount;
+    digits.innerHTML = price;
+}
+
+var decrease = function() {
+    qCount--;
+    if (qCount >= 0) {
+        quantity.innerHTML = qCount;
+        price = itemPrice * qCount;
+        digits.innerHTML = price;
+    } else {
+        alert("The item Quantity cannot be less than 0");
+    }
+}
 
 
 
