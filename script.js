@@ -103,7 +103,14 @@ function createCart(eventTarget, count) {
 
     incrBtn.onclick = incrQuantity;
     decrBtn.onclick = decrQuantity;
-    removeBtn.onclick = removeRow;
+    removeBtn.addEventListener('click', function(event) {
+        var removeClicked = event.target;
+        removeClicked.parentElement.parentElement.remove();
+        itemCount--;
+        itemCounter.innerHTML = itemCount;
+        styleTwo(eventTarget);
+        updateTotalPrice();
+    })
 
     var quantity = document.createElement('span');
     quantity.style.padding = "5px";
@@ -160,20 +167,17 @@ function createCart(eventTarget, count) {
     }
 }
 
-function removeRow() {
-    var removeItemButtons = document.getElementsByClassName('btn-danger');
-
-    for (let i = 0; i < removeItemButtons.length; i++) {
-        var button = removeItemButtons[i];
-        button.addEventListener('click', function(event) {
-            var removeClicked = event.target;
-            removeClicked.parentElement.parentElement.remove();
-            itemCount--;
-            itemCounter.innerHTML = itemCount;
-            updateTotalPrice();
-        })
-    }
-}
+// function removeRow() {
+//     var removeItemButtons = document.getElementsByClassName('btn-danger');
+//     for (let i = 0; i < removeItemButtons.length; i++) {
+//         var button = removeItemButtons[i];
+//         button.addEventListener('click', function(event) {
+//             var removeClicked = event.target;
+//             removeClicked.parentElement.parentElement.remove();
+//             updateTotalPrice();
+//         })
+//     }
+// }
 
 function removeCartRow(event) {
     btnTarget = event;
@@ -190,4 +194,8 @@ function removeCartRow(event) {
         }
     }
     styleTwo(event);
+}
+
+function setItemNumber() {
+
 }
