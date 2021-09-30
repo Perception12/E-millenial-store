@@ -177,20 +177,7 @@ function createList() {
 
 }
 
-function removeRow(id) {
-    document.getElementById(id).remove();
-}
 
-function getTotalPrice() {
-    var totalPrice = 0;
-    for (let i = 0; i < tableList.length; i++) {
-        if (tableList[i].removed = false) {
-            id = tableList[i].dID;
-            totalPrice += parseInt(document.getElementById(id).innerHTML);
-        }
-    }
-    total.innerHTML = totalPrice;
-}
 
 
 cartBtn = document.getElementById('cartEvent');
