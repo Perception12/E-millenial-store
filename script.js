@@ -1,6 +1,7 @@
 var itemCount = 0;
 var itemCounter = document.getElementById('itemNumber');
 
+
 function displayCart() {
     document.getElementById('shop').style.display = 'block';
 }
@@ -58,10 +59,6 @@ function updateTotalPrice() {
     document.getElementById('total').innerHTML = total;
 }
 
-function removeFromCart() {
-
-}
-
 function createCart(eventTarget, count) {
     btnTarget = eventTarget;
     var container = btnTarget.parentElement;
@@ -77,7 +74,6 @@ function createCart(eventTarget, count) {
     var priceCol = document.createElement('td');
     var quantityCol = document.createElement('td');
     var removeBtnCol = document.createElement('td');
-    removeBtnCol.className = 'btn-danger';
 
     var incrBtn = document.createElement('span');
     incrBtn.innerHTML = '+';
@@ -96,6 +92,7 @@ function createCart(eventTarget, count) {
     decrBtn.style.cursor = "pointer";
 
     var removeBtn = document.createElement('span');
+    removeBtn.className = 'btn-danger';
     removeBtn.innerText = "Remove";
     removeBtn.style.padding = "5px 15px";
     removeBtn.style.backgroundColor = "#FFCD9E";
@@ -109,6 +106,7 @@ function createCart(eventTarget, count) {
     quantity.innerHTML = qCount;
 
     snCol.innerHTML = count;
+    snCol.className = "table-index";
     snCol.style.textAlign = 'center';
     snCol.style.padding = '10px';
 
@@ -132,6 +130,7 @@ function createCart(eventTarget, count) {
 
     incrBtn.onclick = incrQuantity;
     decrBtn.onclick = decrQuantity;
+    removeBtn.onclick = removeRow;
 
     row.appendChild(snCol);
     row.appendChild(itemCol);
@@ -155,5 +154,19 @@ function createCart(eventTarget, count) {
             quantity.innerHTML = qCount;
             updateTotalPrice();
         }
+    }
+}
+
+function removeRow() {
+    var removeItemButtons = document.getElementsByClassName('btn-danger');
+
+    for (let i = 0; i < removeItemButtons.length; i++) {
+        var button = removeItemButtons[i];
+        button.addEventListener('click', function(event) {
+            var removeClicked = event.target;
+            removeClicked.parentElement.parentElement.remove();
+            itemCount--;
+            updateTotalPrice();
+        })
     }
 }
