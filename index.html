@@ -124,19 +124,31 @@
             </table>
 
             <form action="" id="dForm">
-                <input type="text" placeholder="Your Name"><br><br>
-                <input type="email" placeholder="Your Email"><br><br>
-                <input type="text" placeholder="Your phone number">
+                <input onblur="nameValidation()" type="text" placeholder="Your Name"><br>
+                <p id="name-error" class="errors"></p><br>
+                <input onblur="emailValidation()" type="email" placeholder="Your Email"><br>
+                <p id="email-error" class="errors"></p><br>
+                <input onblur="numberValidation()" type="text" placeholder="Your phone number"><br>
+                <p id="phone-error" class="errors"></p><br>
             </form>
 
             <h2>Total Amount to be Paid</h2>
-            <p><b>₦<span id="total">0</span></b></p>
+            <p class="amount"><b>₦<span id="total">0</span></b></p>
 
-            <button id="checkout">checkout</button>
-            <button id="continue" onclick="continueShopping()">Continue Shopping</button>
+            <button onclick="summary()" id="checkout">checkout</button>
+            <button id="continue" onclick="closeCart()">Continue Shopping</button>
         </div>
     </div>
 
+    <div id="summary">
+        <div id="ThankYouPage">
+            <p><b>Thank You, <span id="customer"></span>, Your Order has been recieved</b></p>
+            <img src="check.svg" width="100px" height="100px">
+            <p>Summary</p>
+            <div class='summary-table'></div>
+            <button onclick="closeSummary()">Ok</button>
+        </div>
+    </div>
     <script src="./script.js"></script>
 </body>
 

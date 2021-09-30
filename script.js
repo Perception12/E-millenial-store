@@ -1,14 +1,16 @@
 var itemCount = 0;
 var itemCounter = document.getElementById('itemNumber');
 
-
+// Displays Cart
 function displayCart() {
     document.getElementById('shop').style.display = 'block';
 }
 
-function continueShopping() {
+function closeCart() {
     document.getElementById('shop').style.display = 'none';
 }
+
+// All the cart Table list functions
 
 itemButtons = document.getElementsByClassName('items');
 
@@ -182,4 +184,57 @@ function removeCartRow(event) {
         }
     }
     styleTwo(event);
+}
+
+// Form Validation
+var form = document.getElementById('dForm');
+var formInput = document.getElementsByTagName('input');
+var nameInput
+
+function nameValidation() {
+    nameInput = formInput[0];
+    var nameError = document.getElementById('name-error');
+
+    if (nameInput.value == "") {
+        nameInput.style.borderColor = 'red';
+        nameError.innerHTML = "Enter your name";
+    } else {
+        nameInput.style.borderColor = '#33cc33';
+        nameError.innerHTML = "";
+    }
+}
+
+function emailValidation() {
+    var emailInput = formInput[1];
+    var emailError = document.getElementById('email-error');
+
+    if (emailInput.value == "") {
+        emailInput.style.borderColor = 'red';
+        emailError.innerHTML = "please enter an email";
+    } else if (!emailInput.value.includes("@")) {
+        emailInput.style.borderColor = 'red';
+        emailError.innerHTML = "enter a valid email";
+    } else {
+        emailInput.style.borderColor = '#33cc33';
+        emailError.innerHTML = "";
+    }
+}
+
+function numberValidation() {
+    var numberInput = formInput[2];
+    var numberError = document.getElementById('phone-error');
+
+    if (numberInput.value == "") {
+        numberInput.style.borderColor = 'red';
+        numberError.innerHTML = "enter a number";
+    } else if (!parseInt(numberInput.value)) {
+        numberInput.style.borderColor = 'red';
+        numberError.innerHTML = "enter a valid number";
+    } else if (numberInput.value.length != 11) {
+        numberInput.style.borderColor = 'red';
+        numberError.innerHTML = "number cannot be less or greater than 11";
+    } else {
+        numberInput.style.borderColor = '#33cc33';
+        numberError.innerHTML = "";
+    }
 }
