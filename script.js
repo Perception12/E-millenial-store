@@ -238,3 +238,13 @@ function numberValidation() {
         numberError.innerHTML = "";
     }
 }
+
+function summary() {
+    closeCart();
+    document.getElementById('customer').innerHTML = nameInput.value;
+    document.getElementById('summary').style.display = 'block';
+}
+
+function closeSummary() {
+    document.getElementById('summary').style.display = 'none';
+}
