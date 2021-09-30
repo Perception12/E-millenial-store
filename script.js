@@ -183,7 +183,3 @@ function removeCartRow(event) {
     }
     styleTwo(event);
 }
-
-function setItemNumber() {
-
-}
