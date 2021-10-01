@@ -135,7 +135,7 @@
             <h2>Total Amount to be Paid</h2>
             <p class="amount"><b>₦<span id="total">0</span></b></p>
 
-            <button onclick="summary()" id="checkout">checkout</button>
+            <button onclick="payWithPaystack()" id="checkout">checkout</button>
             <button id="continue" onclick="closeCart()">Continue Shopping</button>
         </div>
     </div>
@@ -156,6 +156,8 @@
             <button onclick="closeSummary()">Ok</button>
         </div>
     </div>
+
+    <script src="https://js.paystack.co/v1/inline.js"></script>
     <script src="./script.js"></script>
 </body>
 

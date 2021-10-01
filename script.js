@@ -189,7 +189,9 @@ function removeCartRow(event) {
 // Form Validation
 var form = document.getElementById('dForm');
 var formInput = document.getElementsByTagName('input');
-var nameInput
+var nameInput;
+var emailInput;
+var numberInput;
 
 function nameValidation() {
     nameInput = formInput[0];
@@ -205,7 +207,7 @@ function nameValidation() {
 }
 
 function emailValidation() {
-    var emailInput = formInput[1];
+    emailInput = formInput[1];
     var emailError = document.getElementById('email-error');
 
     if (emailInput.value == "") {
@@ -221,7 +223,7 @@ function emailValidation() {
 }
 
 function numberValidation() {
-    var numberInput = formInput[2];
+    numberInput = formInput[2];
     var numberError = document.getElementById('phone-error');
 
     if (numberInput.value == "") {
@@ -285,4 +287,40 @@ function summaryTable() {
         summaryRow.appendChild(sumQuantity);
         summaryTable.appendChild(summaryRow);
     }
+}
+
+function payWithPaystack() {
+
+    var handler = PaystackPop.setup({
+        key: 'pk_test_47b55371f72577dfc95aac213c0792e4393d43a9', //put your public key here
+        email: emailInput.value, //put your customer's email here
+        amount: document.getElementById('total').innerHTML, //amount the customer is supposed to pay
+        metadata: {
+            custom_fields: [{
+                display_name: "Mobile Number",
+                variable_name: "mobile_number",
+                value: parseInt(numberInput.value) //customer's mobile number
+            }]
+        },
+        callback: function(response) {
+            //after the transaction have been completed
+            //make post call  to the server with to verify payment 
+            //using transaction reference as post data
+            $.post("verify.php", { reference: response.reference }, function(status) {
+                if (status == "success") {
+                    //successful transaction
+                    alert('Transaction was successful');
+                } else {
+                    //transaction failed
+                    alert(response);
+                }
+            });
+        },
+        onClose: function() {
+            //when the user close the payment modal
+            alert('Transaction cancelled');
+        }
+    });
+    handler.openIframe(); //open the paystack's payment modal
+    summary();
 }
